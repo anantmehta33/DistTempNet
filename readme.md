@@ -9,8 +9,8 @@
 
 
 ## Credits
-Our implementation is based on [ALBEF](https://github.com/salesforce/ALBEF).
-It is an extension of original TempNet paper accepted at ICML 24 (https://arxiv.org/abs/2404.04575).
+Our implementation is based on [ALBEF](https://github.com/salesforce/ALBEF). <br />
+It is an extension of original TempNet paper accepted at ICML 24 (https://arxiv.org/abs/2404.04575). <br />
 We also thank mlfoundations (OpenCLIP) for providing implementation of Vision Transformer.
 
 ## 📚 Citation
@@ -34,7 +34,7 @@ These bimodal experiments on TempNet and its distributed training framework need
 We used Datacomp(1B) ([download](https://github.com/mlfoundations/datacomp)) to evaluate which includes 38 zero-shot downstream tasks. We also report the average performance on two
 subsets of the tasks: ImageNet and its different variants (IN & Variants), and Retrieval. IN & Variants tasks consist of ImageNet-1k and 6 ImageNet distribution shift datasets. Retrieval tasks consist of Flickr30k, MSCOCO, and WinoGAViL.
 
-After downloading the data, one needs to organize the data folder as follows:
+After downloading the data, one needs to organize the data folder as follows: <br />
 For CC3M:
 ```
 .

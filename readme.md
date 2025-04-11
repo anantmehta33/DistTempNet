@@ -7,7 +7,7 @@
 - open-clip-torch==2.31.0
 - webdataset==0.2.31
 
-Please install a new environemnt in your server using the provided environment.yml file
+Please install a new environment in your server using the provided environment.yml file
 
 
 ## Credits

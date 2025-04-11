@@ -11,6 +11,19 @@ Our implementation is based on [ALBEF](https://github.com/salesforce/ALBEF).
 Original TempNet paper accepted at ICML 24 (https://arxiv.org/abs/2404.04575)
 OpenCLIP implementation of Vision Transformer, by mlfoundations.
 
+## 📚 Citation
+
+If you find this tutorial or code helpful, please consider citing our paper:
+
+```bibtex
+@article{qiu2024to,
+  title     = {To Cool or not to Cool? Temperature Network Meets Large Foundation Models via DRO},
+  author    = {Zi-Hao Qiu and Siqi Guo and Mao Xu and Tuo Zhao and Lijun Zhang and Tianbao Yang},
+  journal   = {arXiv preprint arXiv:2404.04575},
+  year      = {2024}
+}
+```
+
 
 ## Data
 These bimodal experiments on TempNet and its distributed training framework need three image-text datasets: CC3M ([download](https://ai.google.com/research/ConceptualCaptions/download)), CC12M ([download](https://github.com/google-research-datasets/conceptual-12m)), and DFN ([download](https://machinelearning.apple.com/research/data-filtering-networks)). Besides, one also needs the following files to build pytorch datasets,  [clip_train](https://drive.google.com/drive/folders/1hAd0956xIztfwq0WrWLTGBx8sNuye595?usp=sharing) and [downstream](https://drive.google.com/drive/folders/1hAd0956xIztfwq0WrWLTGBx8sNuye595?usp=sharing), for pretraining and downstream tasks, respectively.

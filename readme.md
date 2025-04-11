@@ -15,7 +15,7 @@ OpenCLIP implementation of Vision Transformer, by mlfoundations.
 ## Data
 These bimodal experiments on TempNet and its distributed training framework need three image-text datasets: CC3M ([download](https://ai.google.com/research/ConceptualCaptions/download)), CC12M ([download](https://github.com/google-research-datasets/conceptual-12m)), and DFN ([download](https://machinelearning.apple.com/research/data-filtering-networks)). Besides, one also needs the following files to build pytorch datasets,  [clip_train](https://drive.google.com/drive/folders/1hAd0956xIztfwq0WrWLTGBx8sNuye595?usp=sharing) and [downstream](https://drive.google.com/drive/folders/1hAd0956xIztfwq0WrWLTGBx8sNuye595?usp=sharing), for pretraining and downstream tasks, respectively.
 
-## Evaluatino Dataset
+## Evaluation Dataset
 We used Datacomp(1B) ([download](https://github.com/mlfoundations/datacomp)) to evaluate which includes 38 zero-shot downstream tasks. We also report the average performance on two
 subsets of the tasks: ImageNet and its different variants (IN & Variants), and Retrieval. IN & Variants tasks consist of ImageNet-1k and 6 ImageNet distribution shift datasets. Retrieval tasks consist of Flickr30k, MSCOCO, and WinoGAViL.
 

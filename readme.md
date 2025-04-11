@@ -4,12 +4,14 @@
 - torchvision 0.11 
 - timm 0.5.4
 - transformers 4.11.0
+- open-clip-torch==2.31.0
+- webdataset==0.2.31
 
 
 ## Credits
 Our implementation is based on [ALBEF](https://github.com/salesforce/ALBEF).
-Original TempNet paper accepted at ICML 24 (https://arxiv.org/abs/2404.04575)
-OpenCLIP implementation of Vision Transformer, by mlfoundations.
+It is an extension of original TempNet paper accepted at ICML 24 (https://arxiv.org/abs/2404.04575).
+We also thank mlfoundations (OpenCLIP) for providing implementation of Vision Transformer.
 
 ## 📚 Citation
 
@@ -33,6 +35,7 @@ We used Datacomp(1B) ([download](https://github.com/mlfoundations/datacomp)) to 
 subsets of the tasks: ImageNet and its different variants (IN & Variants), and Retrieval. IN & Variants tasks consist of ImageNet-1k and 6 ImageNet distribution shift datasets. Retrieval tasks consist of Flickr30k, MSCOCO, and WinoGAViL.
 
 After downloading the data, one needs to organize the data folder as follows:
+For CC3M:
 ```
 .
 +--cc3m

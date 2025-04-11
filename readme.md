@@ -173,11 +173,13 @@ python evaluate.py \
 
 ```
 ## Results
-![screenshot](Results/Datacomp.png)
 
-![screenshot](Results/ImageNet.png)
+<img width="279" alt="Datacomp" src="https://github.com/user-attachments/assets/d23b6904-6ba7-4cbe-998e-4352fc51b139" />
 
-![screenshot](Results/Retrieval.png)
+<img width="297" alt="ImageNet" src="https://github.com/user-attachments/assets/aad1d1f0-afdf-44f7-8e7a-910784dfa843" />
+
+<img width="259" alt="Retrieval" src="https://github.com/user-attachments/assets/b7ea0d86-1120-4022-b267-63fcf9539c56" />
+
 
 ## 🚧 Next Steps
 

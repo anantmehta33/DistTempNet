@@ -4,8 +4,8 @@
 - torchvision 0.11 
 - timm 0.5.4
 - transformers 4.11.0
-- open-clip-torch==2.31.0
-- webdataset==0.2.31
+- open-clip-torch 2.31.0
+- webdataset 0.2.31
 
 Please install a new environment in your server using the provided environment.yml file
 

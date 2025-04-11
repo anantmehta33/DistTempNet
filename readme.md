@@ -13,7 +13,7 @@ OpenCLIP implementation of Vision Transformer, by mlfoundations.
 
 ## 📚 Citation
 
-If you find this tutorial or code helpful, please consider citing our paper:
+If you find this work or code helpful, please consider citing this paper:
 
 ```bibtex
 @article{qiu2024to,

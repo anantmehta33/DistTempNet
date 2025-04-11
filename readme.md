@@ -7,6 +7,8 @@
 - open-clip-torch==2.31.0
 - webdataset==0.2.31
 
+Please install a new environemnt in your server using the provided environment.yml file
+
 
 ## Credits
 Our implementation is based on [ALBEF](https://github.com/salesforce/ALBEF). <br />
@@ -103,18 +105,17 @@ In **DistTempNet v1**, we introduce **cosine scheduling** on the temperature par
 #SBATCH --ntasks-per-node=2                    # Request 8 tasks per node
 #SBATCH --cpus-per-task=6
 #SBATCH --mem=80G                              # Request 80GB of memory
-#SBATCH --output=/scratch/group/optmai/anant/Bimodal_cc12m/ViTb32.%j  # Send stdout/err to "TempNetOut.[jobID]"
+#SBATCH --output=/path/to/output/ViTb32.%j  # Send stdout/err to "TempNetOut.[jobID]"
 #SBATCH --gres=gpu:a100:2                    # Request 8 A100 GPUs (2 per node)
 #SBATCH --partition=gpu                         # Specify the partition for GPU jobs
 
 # Set environment variables
 export TRANSFORMERS_OFFLINE=1
-data_path=/scratch/group/optmai/datasets/cc12m_webdataset/cc12m # Base data path 
-imagenet_val_path=/scratch/group/optmai/datasets/imagenet/val # Updated ImageNet path
-train_image_root=/scratch/group/optmai/datasets/cc12m_webdataset/cc12m # New CC3M train path  
+data_path=/path/to/your/data/cc12m # Base data path 
+imagenet_val_path=/path/to/your/data/imagenet/val # Updated ImageNet path
+train_image_root=/path/to/your/data/cc12m # New CC3M train path  
 data=cc12m
-train_file=/scratch/user/anant_mehta/TempNet/clip_train/cc12m_full_data.json # Updated train_file path
-val_coco_file=/scratch/user/anant_mehta/TempNet/clip_train/coco_val.json  # Add this line for the validation file
+val_coco_file=/path/to/your/data/coco_val.json  # Add this line for the validation file
 lr=0.0008
 frac=1.0
 desc=isogclr_tempnet
@@ -122,7 +123,7 @@ gamma=0.8
 rho=9.5
 
 # Change to the directory containing your script
-cd /scratch/group/optmai/anant/Bimodal_cc12m
+cd /working/directory
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
 export MASTER_PORT=4820
@@ -132,7 +133,7 @@ export MASTER_PORT=4820
 
 # Run your training script with the appropriate parameters
 srun python -u  clip_cc12m.py \
-    --train-data '/scratch/group/optmai/datasets/cc12m_webdataset/cc12m/{00000..01242}.tar' \
+    --train-data '/path/to/your/data/cc12m/{00000..01242}.tar' \
     --train-num-samples 9184307 --data_size 12423374 \
     --dataset_type webdataset\
     --data_path ${data_path} \
@@ -175,17 +176,16 @@ srun python -u  clip_cc12m.py \
 #SBATCH --ntasks-per-node=1                   
 #SBATCH --cpus-per-task=6
 #SBATCH --mem=80G                              
-#SBATCH --output=/scratch/group/optmai/anant/datacomp/Evaluation.%j 
+#SBATCH --output=/path/to/your/data/datacomp/Evaluation.%j 
 #SBATCH --gres=gpu:a100:1                   
 #SBATCH --partition=gpu                     
 
-cd /scratch/group/optmai/anant/datacomp
-
+cd /working/directory/
 python evaluate.py \
- --train_output_dir /scratch/group/optmai/anant/datacomp/train_output_dir \
- --data_dir /scratch/group/optmai/datasets/datacomp_datasets \
+ --train_output_dir /path/to/your/data/datacomp/train_output_dir \
+ --data_dir /path/to/your/data/datacomp_datasets \
  --model ViT-B-32 \
- --use_model "ViT-B-32 /scratch/group/optmai/anant/datacomp/train_output_dir/modified_checkpoint.pth"
+ --use_model "ViT-B-32 /path/to/your/checkpoint/checkpoint.pth"
 
 ```
 ## Results

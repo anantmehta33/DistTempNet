@@ -244,7 +244,7 @@ def zeroshot_transfer(model, data_loader, dataset_name, tokenizer, device):
         image, label = image.to(device), label.to(device)
         image_feat = model.visual_encoder(image)        
         #image_embed = model.vision_proj(image_feat)  # now we do not need it
-        image_embed = image_eimage_feat   
+        image_embed = image_feat   
         image_embedding = F.normalize(image_embed, dim=-1)
 
         logits = image_embedding @ text_embeddings
@@ -464,9 +464,9 @@ def main(args):
     args.data_number = train_loader.num_samples
     print("number of train samples are",args.data_number)
     if args.data == 'cc12m':
-        args.data_number = 13000000 # to address the mistach issue
+        args.data_number = 13000000 # to address the indexing mismatch issue for cc12m
     if args.data == 'dfn_med':
-        args.data_number = 19280000 # to address the mistach issue
+        args.data_number = 19280000 # to address the indexing mismatch issue for dfn12m
     val_coco_loader, test_coco_loader = create_val_loader([val_coco_dataset, test_coco_dataset], samplers[1:], 
                                                           [args.batch_size_test]*2, [8]*2, [None]*2)
     val_flickr_loader, test_flickr_loader = create_val_loader([val_flickr_dataset, test_flickr_dataset], samplers[1:], 
@@ -499,7 +499,7 @@ def main(args):
 
             image = image.to(device, non_blocking=True)
             #text_input = tokenizer(text, padding='max_length', truncation=True, max_length=30, return_tensors="pt").to(device)
-            text_input = tokenizer(texts, context_length=77).to(device) 
+            text_input = tokenizer(text, context_length=77).to(device) 
             with torch.no_grad():
                 image_feat, text_feat = model(image, text_input, idx=idx, text_idx=text_idx, epoch=0, max_epoch=0, return_feat=True)
                 image_feat = concat_all_gather(image_feat)
@@ -592,7 +592,7 @@ def main(args):
                 image_feat = model.criterion.image_temp_gen(image_feat, return_feats=True).cpu().numpy()
                 image_feat_list.append(image_feat)
 
-                text = tokenizer(texts, context_length=77).to(device) 
+                text = tokenizer(text, context_length=77).to(device) 
                 if args.text_encoder == 'Transformer':
                     text_output = model.text_encoder(text)
                     #text_feat = F.normalize(model.text_proj(text_output), dim=-1)#.cpu().numpy()
@@ -730,7 +730,7 @@ def main(args):
             for image, text, idx, text_idx in tqdm(train_loader):
                 image = image.to(device)
                 #text = tokenizer(text, padding='max_length', truncation=True, max_length=30, return_tensors="pt").to(device)
-                text = tokenizer(texts, context_length=77).to(device) 
+                text = tokenizer(text, context_length=77).to(device) 
 
                 #image_feat = F.normalize(model.vision_proj(model.visual_encoder(image)), dim=-1)
                 image_feat = F.normalize(model.visual_encoder(image), dim=-1)

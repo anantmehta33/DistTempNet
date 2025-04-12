@@ -88,13 +88,13 @@ We explored multiple CLIP-style encoder combinations:
 
 - **ViT-B/32 + Text Transformer**, both trained **from scratch**
   - Text transformer uses **Byte Pair Encoding (BPE)** for tokenization
-- **ResNet** and **DistilBERT**, using **pretrained checkpoints**
-  - DistilBERT uses HuggingFace's **`AutoTokenizer`** for consistent text preprocessing
+- **ResNet-50** and **DistilBERT**, using **pretrained checkpoints**
+  - DistilBERT uses HuggingFace's **`AutoTokenizer`** for consistent text tokenization
 
 
 ## 🚀 V1 Improvements
 
-In **DistTempNet v1**, we introduce **cosine scheduling** on the temperature parameter γ (`gamma`) to gradually adjust the confidence scaling during training, which improves final model performance.
+In **DistTempNet v1**, we introduce **cosine scheduling** on the temperature parameter γ (`gamma`) to gradually reduce the variance between stochastic gradient estimator and U (`U`) in the compositional optimization problem, which improves final model performance as epochs increase.
 
 
 ## Training
